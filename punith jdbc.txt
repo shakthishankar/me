@@ -1,0 +1,52 @@
+<%@ page import ="java.sql.*" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<form action="" method="post">
+<h3>Username</h3>
+<input type="email" name="email" placeholder="username" required>
+<h3>Password</h3>
+<input type="password" name="password" placeholder="password" required>
+<br><br>
+<button>submit</button>
+</form>
+<%
+String name = request.getParameter("email");
+String password = request.getParameter("password");
+
+try{
+Class.forName("com.mysql.jdbc.Driver");
+Connection con = DriverManager.getConnection("jdbc:mysql://localhost/trail","root","");
+PreparedStatement ps = con.prepareStatement("insert into access value (?,?)");
+ps.setString(1,name);
+ps.setString(2,password);
+
+int i = ps.executeUpdate();
+if(i>0){
+out.println("<script>alert('Inserted Succesfully')</script>");
+
+}
+
+else{
+out.println("<script>alert('Not Inserted Succesfully')</script>");
+}
+
+
+
+}catch(Exception e){
+e.printStackTrace();
+}
+
+
+
+
+%>
+
+</body>
+</html>
