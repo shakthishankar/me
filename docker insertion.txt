@@ -1,0 +1,143 @@
+app.js-
+
+console.log("punithgowda")
+-------------------------------------------
+
+Dockerfile-
+
+FROM node:alpine
+COPY . /app
+WORKDIR /app
+CMD node app.js
+---------------------------------------------
+go to terminal-
+
+PS C:\Users\shakt\OneDrive\Desktop\doc> node app.js
+shakthishankar
+PS C:\Users\shakt\OneDrive\Desktop\doc> docker run app.js
+Unable to find image 'app.js:latest' locally
+docker: Error response from daemon: pull access denied for app.js, repository does not exist or may require 'docker login': denied: requested access to the resource is denied.
+See 'docker run --help'.
+PS C:\Users\shakt\OneDrive\Desktop\doc> docker build -t doc .         
+[+] Building 2.5s (8/8) FINISHED
+ => [internal] load build definition from Dockerfile                                     0.1s
+ => => transferring dockerfile: 97B                                                      0.0s
+ => [internal] load .dockerignore                                                        0.0s
+ => => transferring context: 2B                                                          0.0s
+ => [internal] load metadata for docker.io/library/node:alpine                           2.1s 
+ => [internal] load build context                                                        0.1s
+ => => transferring context: 163B                                                        0.0s 
+ => CACHED [1/3] FROM docker.io/library/node:alpine@sha256:3ed634e0f15d3e05a1918c394996  0.0s 
+ => [2/3] COPY . /app                                                                    0.1s
+ => [3/3] WORKDIR /app                                                                   0.0s 
+ => exporting to image                                                                   0.1s
+ => => exporting layers                                                                  0.1s 
+ => => writing image sha256:059bd5da1bbdf2069f7be01e4a09e111f13a0e3ce68097aaff8e95626ed  0.0s 
+ => => naming to docker.io/library/doc                                                   0.0s 
+
+Use 'docker scan' to run Snyk tests against images to find vulnerabilities and learn how to fix them
+PS C:\Users\shakt\OneDrive\Desktop\doc> docker image ls
+REPOSITORY   TAG       IMAGE ID       CREATED          SIZE
+doc          latest    059bd5da1bbd   23 seconds ago   175MB
+hellodock    latest    1eca3f4a73c5   7 days ago       175MB
+nginx        latest    1403e55ab369   2 weeks ago      142MB
+PS C:\Users\shakt\OneDrive\Desktop\doc> docker run doc
+shakthishankar
+PS C:\Users\shakt\OneDrive\Desktop\doc> docker login 
+Login with your Docker ID to push and pull images from Docker Hub. If you don't have a Docker ID, head over to https://hub.docker.com to create one.
+Password:
+Login Succeeded
+
+Logging in with your password grants your terminal complete access to your account.
+For better security, log in with a limited-privilege personal access token. Learn more at https://docs.docker.com/go/access-tokens/
+PS C:\Users\shakt\OneDrive\Desktop\doc> docker images
+REPOSITORY   TAG       IMAGE ID       CREATED         SIZE
+doc          latest    059bd5da1bbd   2 minutes ago   175MB
+hellodock    latest    1eca3f4a73c5   7 days ago      175MB
+nginx        latest    1403e55ab369   2 weeks ago     142MB
+PS C:\Users\shakt\OneDrive\Desktop\doc> docker tag doc:latest shakthishankar59/firstimage
+PS C:\Users\shakt\OneDrive\Desktop\doc> docker push sha_123/firstimage     
+Using default tag: latest
+The push refers to repository [docker.io/sha_123/firstimage]
+An image does not exist locally with the tag: sha_123/firstimage
+PS C:\Users\shakt\OneDrive\Desktop\doc> docker images
+REPOSITORY                    TAG       IMAGE ID       CREATED         SIZE
+shakthishankar59/firstimage   latest    059bd5da1bbd   7 minutes ago   175MB
+doc                           latest    059bd5da1bbd   7 minutes ago   175MB
+hellodock                     latest    1eca3f4a73c5   7 days ago      175MB
+nginx                         latest    1403e55ab369   2 weeks ago     142MB
+PS C:\Users\shakt\OneDrive\Desktop\doc> docker push sha_123/firstimage  
+Using default tag: latest
+The push refers to repository [docker.io/sha_123/firstimage]
+An image does not exist locally with the tag: sha_123/firstimage
+PS C:\Users\shakt\OneDrive\Desktop\doc> docker push sha_123/firstimage              
+Using default tag: latest
+The push refers to repository [docker.io/sha_123/firstimage]
+  -a, --all-tags                Push all tagged images in the repository
+      --disable-content-trust   Skip image signing (default true)
+  -q, --quiet                   Suppress verbose output
+PS C:\Users\shakt\OneDrive\Desktop\doc> -a
+-a : The term '-a' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was
+included, verify that the path is correct and try again.
+At line:1 char:1
++ -a
++ ~~
+    + CategoryInfo          : ObjectNotFound: (-a:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS C:\Users\shakt\OneDrive\Desktop\doc> docker build -t doc .
+[+] Building 6.9s (9/9) FINISHED
+ => [internal] load build definition from Dockerfile                                                                                                            0.1s
+ => => transferring dockerfile: 31B                                                                                                                             0.0s
+ => [internal] load .dockerignore                                                                                                                               0.0s
+ => => transferring context: 2B                                                                                                                                 0.0s
+ => [internal] load metadata for docker.io/library/node:alpine                                                                                                  6.7s
+ => [auth] library/node:pull token for registry-1.docker.io                                                                                                     0.0s
+ => [internal] load build context                                                                                                                               0.0s
+ => => transferring context: 56B                                                                                                                                0.0s
+ => [1/3] FROM docker.io/library/node:alpine@sha256:3ed634e0f15d3e05a1918c3949963508f7ed56350cf94156e6d804ae577849fa                                            0.0s
+ => CACHED [2/3] COPY . /app                                                                                                                                    0.0s
+ => CACHED [3/3] WORKDIR /app                                                                                                                                   0.0s
+ => exporting to image                                                                                                                                          0.0s
+ => => exporting layers                                                                                                                                         0.0s
+ => => writing image sha256:059bd5da1bbdf2069f7be01e4a09e111f13a0e3ce68097aaff8e95626ed2857e                                                                    0.0s
+ => => naming to docker.io/library/doc                                                                                                                          0.0s
+
+Use 'docker scan' to run Snyk tests against images to find vulnerabilities and learn how to fix them
+PS C:\Users\shakt\OneDrive\Desktop\doc> docker images
+REPOSITORY                    TAG       IMAGE ID       CREATED          SIZE
+doc                           latest    059bd5da1bbd   14 minutes ago   175MB
+shakthishankar59/firstimage   latest    059bd5da1bbd   14 minutes ago   175MB
+hellodock                     latest    1eca3f4a73c5   7 days ago       175MB
+nginx                         latest    1403e55ab369   2 weeks ago      142MB
+PS C:\Users\shakt\OneDrive\Desktop\doc> docker tag doc:latest shakthishankar59/second    
+PS C:\Users\shakt\OneDrive\Desktop\doc> docker images
+REPOSITORY                    TAG       IMAGE ID       CREATED          SIZE
+doc                           latest    059bd5da1bbd   14 minutes ago   175MB
+shakthishankar59/firstimage   latest    059bd5da1bbd   14 minutes ago   175MB
+shakthishankar59/second       latest    059bd5da1bbd   14 minutes ago   175MB
+hellodock                     latest    1eca3f4a73c5   7 days ago       175MB
+nginx                         latest    1403e55ab369   2 weeks ago      142MB
+PS C:\Users\shakt\OneDrive\Desktop\doc> docker push shakthishankar59/second
+Using default tag: latest
+The push refers to repository [docker.io/shakthishankar59/second]
+5f70bf18a086: Pushed
+52c26dfe4793: Pushed
+e341def868c7: Mounted from library/node
+af7f08457991: Mounted from library/node
+6f98ae799fc9: Mounted from library/node
+ded7a220bb05: Mounted from library/node
+latest: digest: sha256:3afa1b7eaa309997f71e380356f97bcacee1a18d6925af93c5160b2942ab97ea size: 1571
+PS C:\Users\shakt\OneDrive\Desktop\doc> docker push shakthishankar59/firstimage
+Using default tag: latest
+The push refers to repository [docker.io/shakthishankar59/firstimage]
+5f70bf18a086: Mounted from shakthishankar59/second
+52c26dfe4793: Mounted from shakthishankar59/second
+e341def868c7: Mounted from shakthishankar59/second
+af7f08457991: Mounted from shakthishankar59/second
+6f98ae799fc9: Mounted from shakthishankar59/second
+ded7a220bb05: Mounted from shakthishankar59/second
+latest: digest: sha256:3afa1b7eaa309997f71e380356f97bcacee1a18d6925af93c5160b2942ab97ea size: 1571
+PS C:\Users\shakt\OneDrive\Desktop\doc> 
+---------------------------------------------------------------------------------------------------------
+
