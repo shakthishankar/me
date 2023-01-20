@@ -122,3 +122,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface bookinterface extends JpaRepository<book, Long>{
 }
 --------------------------------------------------------------------------
+
+spring.jpa.hibernate.ddl-auto=update
+spring.datasource.url="jdbc:mysql://${MYSQL_HOST:localhost}:8080/pes
+spring.datasourse.username=root
+spring.datasource.password=
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+
+------------------------------------------------------------------------------
